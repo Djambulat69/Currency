@@ -1,4 +1,4 @@
-package com.isaev.currency
+package com.isaev.currency.network
 
 sealed class DataState<out T : Any> {
     data class Success<T : Any>(val data: T) : DataState<T>()

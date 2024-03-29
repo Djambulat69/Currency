@@ -4,6 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.isaev.currency.network.Currency
+import com.isaev.currency.network.DataState
+import com.isaev.currency.network.Repository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -36,7 +39,7 @@ class MainViewModel : ViewModel() {
     fun startRefreshing() {
         refreshingJob = viewModelScope.launch {
             while (true) {
-                delay(30000)
+                delay(REFRESH_DELAY)
                 try {
                     _currency.value = DataState.Success(network.getCurrency())
                 } catch (_: Exception) {
@@ -47,6 +50,10 @@ class MainViewModel : ViewModel() {
 
     fun stopRefreshing() {
         refreshingJob?.cancel()
+    }
+
+    private companion object {
+        const val REFRESH_DELAY = 30000L
     }
 
 }

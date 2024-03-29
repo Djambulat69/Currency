@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.isaev.currency.databinding.CurrencyListItemBinding
+import com.isaev.currency.network.VLT
 
 class CurrencyListAdapter : ListAdapter<VLT, CurrencyViewHolder>(ValuteDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {

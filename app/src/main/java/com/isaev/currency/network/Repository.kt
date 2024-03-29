@@ -1,4 +1,4 @@
-package com.isaev.currency
+package com.isaev.currency.network
 
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit

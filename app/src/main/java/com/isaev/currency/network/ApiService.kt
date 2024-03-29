@@ -1,4 +1,4 @@
-package com.isaev.currency
+package com.isaev.currency.network
 
 import retrofit2.http.GET
 

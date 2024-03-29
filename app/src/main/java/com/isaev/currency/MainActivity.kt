@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.isaev.currency.databinding.ActivityMainBinding
+import com.isaev.currency.network.DataState
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
