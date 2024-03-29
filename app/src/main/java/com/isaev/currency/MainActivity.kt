@@ -56,4 +56,16 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        viewModel.startRefreshing()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        viewModel.stopRefreshing()
+    }
 }

@@ -11,7 +11,7 @@ class CurrencyViewHolder(
     fun bind(item: VLT) {
         binding.name.text = item.name
         binding.charCode.text = item.charCode
-        binding.value.text = item.value
+        binding.value.text = binding.root.context.getString(R.string.value_string, item.value)
     }
 
 }

@@ -3,4 +3,6 @@
 
     <string name="wrong">Something went wrong</string>
     <string name="retry">Retry</string>
+
+    <string name="value_string">%s ₽</string>
 </resources>
