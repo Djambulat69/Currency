@@ -5,8 +5,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
+import com.isaev.currency.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel: MainViewModel by lazy { ViewModelProvider(this)[MainViewModel::class.java] }
+    private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -17,6 +22,13 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val currencyAdapter = CurrencyListAdapter()
+
+        binding.currencyList.adapter = currencyAdapter
+
+        viewModel.currency.observe(this) {
+            currencyAdapter.submitList(it.valute)
+        }
 
     }
 }
