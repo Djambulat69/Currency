@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.isaev.currency.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
@@ -28,14 +29,30 @@ class MainActivity : AppCompatActivity() {
         val currencyAdapter = CurrencyListAdapter()
 
         binding.currencyList.adapter = currencyAdapter
+        binding.retryButton.setOnClickListener {
+            viewModel.loadCurrency()
+        }
 
         val formatNew = SimpleDateFormat("dd MMM yyyy HH:mm", Locale.getDefault())
 
-        viewModel.currency.observe(this) {
-            (binding.currencyList.adapter as CurrencyListAdapter).submitList(it.valute)
+        viewModel.currency.observe(this) { state ->
 
-            val date = Date()
-            binding.date.text = formatNew.format(date)
+            if (state is DataState.Success) {
+                (binding.currencyList.adapter as CurrencyListAdapter).submitList(state.data.valute)
+
+                val date = Date()
+                binding.date.text = formatNew.format(date)
+            }
+
+            with(binding) {
+                progressBar.isVisible = state is DataState.Loading
+
+                currencyList.isVisible = state is DataState.Success
+                date.isVisible = state is DataState.Success
+
+                errorMessage.isVisible = state is DataState.Failure
+                retryButton.isVisible = state is DataState.Failure
+            }
         }
 
     }
