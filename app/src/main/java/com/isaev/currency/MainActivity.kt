@@ -7,6 +7,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.isaev.currency.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -29,6 +30,13 @@ class MainActivity : AppCompatActivity() {
         val currencyAdapter = CurrencyListAdapter()
 
         binding.currencyList.adapter = currencyAdapter
+        binding.currencyList.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                DividerItemDecoration.VERTICAL
+            )
+        )
+
         binding.retryButton.setOnClickListener {
             viewModel.loadCurrency()
         }

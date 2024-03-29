@@ -14,6 +14,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="@string/app_name" />
 
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <TextView
         android:id="@+id/date"
         android:layout_width="match_parent"
@@ -25,6 +33,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@id/date" />
 
     <ProgressBar
         android:id="@+id/progress_bar"
