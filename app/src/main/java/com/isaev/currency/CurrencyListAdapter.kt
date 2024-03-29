@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.isaev.currency.databinding.CurrencyListItemBinding
 
-class CurrencyListAdapter : ListAdapter<Valute, CurrencyViewHolder>(ValuteDiffUtil) {
+class CurrencyListAdapter : ListAdapter<VLT, CurrencyViewHolder>(ValuteDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyViewHolder {
         val binding =
             CurrencyListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -19,12 +19,12 @@ class CurrencyListAdapter : ListAdapter<Valute, CurrencyViewHolder>(ValuteDiffUt
     }
 }
 
-object ValuteDiffUtil : DiffUtil.ItemCallback<Valute>() {
-    override fun areItemsTheSame(oldItem: Valute, newItem: Valute): Boolean {
+object ValuteDiffUtil : DiffUtil.ItemCallback<VLT>() {
+    override fun areItemsTheSame(oldItem: VLT, newItem: VLT): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: Valute, newItem: Valute): Boolean {
+    override fun areContentsTheSame(oldItem: VLT, newItem: VLT): Boolean {
         return oldItem == newItem
     }
 }

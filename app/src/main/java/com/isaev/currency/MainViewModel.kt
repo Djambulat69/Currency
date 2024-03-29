@@ -10,13 +10,13 @@ class MainViewModel : ViewModel() {
 
     private val network = Repository
 
-    private val _currency: MutableLiveData<ValuteData> = MutableLiveData()
+    private val _currency: MutableLiveData<Currency> = MutableLiveData()
 
-    val currency: LiveData<ValuteData> = _currency
+    val currency: LiveData<Currency> = _currency
 
     init {
         viewModelScope.launch {
-//            _currency.value = network.getCurrency()
+            _currency.value = network.getCurrency()
         }
     }
 

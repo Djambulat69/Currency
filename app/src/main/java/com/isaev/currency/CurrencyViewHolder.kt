@@ -8,7 +8,7 @@ class CurrencyViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
 
 
-    fun bind(item: Valute) {
+    fun bind(item: VLT) {
         binding.name.text = item.name
         binding.charCode.text = item.charCode
         binding.value.text = item.value
